@@ -106,7 +106,7 @@ The buildpack will detect your apps as a Rails 3 app if it has an `application.r
 
 ### Example script
 Script should be placed in app and modified for your needs (taken from http://www.syntax.us/posts/heroku_buildpack)
-
+```{r, engine='bash', count_lines}
   #!/bin/bash
 
   # hbs/dothis.bash
@@ -136,6 +136,7 @@ Script should be placed in app and modified for your needs (taken from http://ww
   gem list    sqlite3
 
   exit
+  ```
 
 #### Assets
 
