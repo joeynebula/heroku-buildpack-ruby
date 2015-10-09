@@ -1,7 +1,9 @@
 # Heroku Buildpack for Ruby
 ![ruby](https://cloud.githubusercontent.com/assets/51578/8882726/52caf102-3217-11e5-8a6c-2d47c57f0030.jpg)
 
-This is a [Heroku Buildpack](http://devcenter.heroku.com/articles/buildpacks) for Ruby, Rack, and Rails apps. It uses [Bundler](http://gembundler.com) for dependency management.
+This is a fork of [Heroku Buildpack](http://devcenter.heroku.com/articles/buildpacks) for Ruby, Rack, and Rails apps. It uses [Bundler](http://gembundler.com) for dependency management.
+
+This build pack has been changed to allow for gems not allowed by heroku to be loaded by a script after the application is loaded by heroku
 
 This buildpack requires 64-bit Linux.
 
