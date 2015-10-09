@@ -104,6 +104,39 @@ Example Usage:
 
 The buildpack will detect your apps as a Rails 3 app if it has an `application.rb` file in the `config` directory.
 
+### Example script
+Script should be placed in app and modified for your needs (taken from http://www.syntax.us/posts/heroku_buildpack)
+
+  #!/bin/bash
+
+  # hbs/dothis.bash
+
+  # I use this script to help me enhance the ability of
+  # heroku-buildpack
+
+  # heroku-buildpack is software used by heroku to help me deploy applications.
+
+  rails_root=`pwd`
+
+  echo rails_root is
+  echo $rails_root
+  cd ${rails_root}/myvendor/
+
+  # I should install sqlite3 software locally under Rails.root
+
+  mkdir -p ${rails_root}/myvendor/sqlite3
+  tar zxf  ${rails_root}/myvendor/sqlite-autoconf-3080702.tar.gz
+  cd sqlite-autoconf-3080702/
+  ./configure --prefix=${rails_root}/myvendor/sqlite3
+  make
+  make install
+
+  # I should be able to gem install sqlite3 now
+  gem install sqlite3 -- --with-sqlite3-dir=${rails_root}/myvendor/sqlite3
+  gem list    sqlite3
+
+  exit
+
 #### Assets
 
 To enable static assets being served on the dyno, [rails3_serve_static_assets](http://github.com/pedro/rails3_serve_static_assets) is installed by default. If the [execjs gem](http://github.com/sstephenson/execjs) is detected then [node.js](http://github.com/joyent/node) will be vendored. The `assets:precompile` rake task will get run if no `public/manifest.yml` is detected.  See [this article](http://devcenter.heroku.com/articles/rails31_heroku_cedar) on how rails 3.1 works on cedar.
