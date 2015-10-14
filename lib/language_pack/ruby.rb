@@ -584,10 +584,15 @@ WARNING
                 hbs = "#{pwd}/heroku_buildpack_scripts"
                 # If #{hbs}/dothis.bash exists, then run it.
                 if File.exists?("#{hbs}/dothis.bash")
+                  puts "#{hbs}/dothis.bash exsists loading commands"
                   cmd1 = "export GEM_PATH=#{ENV["GEM_PATH"]};"
+                  puts "command 1: #{cmd1}"
                   cmd2 = "export GEM_HOME=#{ENV["GEM_HOME"]};"
+                  puts "command 2: #{cmd2}"
                   cmd3 = "/bin/bash #{hbs}/dothis.bash"
-                  cmds = "#{cmd1} #{cmd2} #{cmd3} "
+                  puts "command 3: #{cmd3}"
+                  cmds = "#{cmd1} #{cmd2} #{cmd3}"
+                  puts "full commands to pipe #{cmds}"
                   bundler_output << pipe("cmds")
                 end
               # Bikle
