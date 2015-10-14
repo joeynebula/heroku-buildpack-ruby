@@ -591,9 +591,10 @@ WARNING
                   puts "command 2: #{cmd2}"
                   cmd3 = "/bin/bash #{hbs}/dothis.bash"
                   puts "command 3: #{cmd3}"
-                  cmds = "#{cmd1} #{cmd2} #{cmd3}"
-                  puts "full commands to pipe #{cmds}"
-                  bundler_output << pipe("cmds")
+                  cmds = "#{cmd1} #{cmd2} #{cmd3} "
+                  puts "full commands to pipe #{cmds.inspect}"
+
+                  bundler_output << pipe("#{cmds}")
                 end
               # Bikle
               bundler_output << pipe("#{bundle_command} --no-clean", out: "2>&1", env: env_vars, user_env: true)
